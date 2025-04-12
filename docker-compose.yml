@@ -1,0 +1,18 @@
+version: '3'
+services:
+  n8n:
+    restart: always
+    ports:
+      - "5678:5678"
+    environment:
+      - N8N_BASIC_AUTH_ACTIVE=true
+      - N8N_BASIC_AUTH_USER=${N8N_BASIC_AUTH_USER}
+      - N8N_BASIC_AUTH_PASSWORD=${N8N_BASIC_AUTH_PASSWORD}
+      - N8N_HOST=${RAILWAY_STATIC_URL}
+      - N8N_PORT=5678
+      - N8N_PROTOCOL=https
+      - TZ=Asia/Bangkok
+    volumes:
+      - n8n_data:/home/node/.n8n
+volumes:
+  n8n_data:
